@@ -41,23 +41,23 @@ def show_document_manager():
         st.dataframe(doc_status)
         
         # Delete document button
-        if st.button("Delete Selected Documents"):
+        with st.form("Delete Documents"):
+            st.write("Select documents to delete and click the button below")
             # Get selected documents
             selected_docs = st.multiselect(
                 "Select documents to delete",
                 doc_status["Original Name"].tolist()
             )
+            btn = st.form_submit_button("Delete Selected Documents")
+        if btn:
+            # Find filename for each selected document
+            file_names_to_delete = [filename for filename, metadata in st.session_state.document_metadata.items() if metadata["original_name"] in selected_docs]
+            for filename in file_names_to_delete:
+                delete_document(filename)
             
-            if selected_docs:
-                # Find filename for each selected document
-                for original_name in selected_docs:
-                    for filename, metadata in st.session_state.document_metadata.items():
-                        if metadata["original_name"] == original_name:
-                            delete_document(filename)
-                
-                # Reinitialize vector store
-                with st.spinner("Reinitializing vector store..."):
-                    st.session_state.retriever = initialize_vector_store()
-                    st.success("Vector store reinitialized successfully")
+            # Reinitialize vector store
+            with st.spinner("Reinitializing vector store..."):
+                st.session_state.retriever = initialize_vector_store()
+                st.success("Vector store reinitialized successfully")
     else:
         st.info("No documents have been processed yet")
