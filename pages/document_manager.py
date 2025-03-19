@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from utils.documents import process_documents, get_document_status, delete_document
 from utils.vector_store import initialize_vector_store
-from utils.query_confluence import fetch_confluence_pages
+from utils.query_confluence import fetch_confluence_pages, process_directory
 
 def show_document_manager():
     st.title("Document Manager")
@@ -10,6 +10,11 @@ def show_document_manager():
     st.subheader("Fetch Confluence Pages")
     if st.button("Fetch Confluence Pages"):
         fetch_confluence_pages()
+    if st.button("Process Confluence Pages"):
+        process_directory(
+            directory_path="./confluence_pages", 
+            output_file="./data/documents/pratt_confluence.json"
+            )
 
     # Initialize document metadata if not exists
     if "document_metadata" not in st.session_state:

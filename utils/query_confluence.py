@@ -3,45 +3,73 @@ from requests.auth import HTTPBasicAuth
 import streamlit as st
 import os
 import json
+from bs4 import BeautifulSoup
+import re
 
-def get_pages_ids(spaceId):
-    your_domain = "alten-mdc.atlassian.net"
-    get_pages_from_spaceId_url = f"https://{your_domain}/wiki/api/v2/spaces/{spaceId}/pages"
-    username = "theo.badoz@alten.com"
-    api_token = st.secrets["confluence_api_token"]
-    headers = {
-        "Accept": "application/json"
+
+def preprocess_confluence_html(html_content, title, fileId, parentId):
+    # Parse HTML
+    soup = BeautifulSoup(html_content, 'html.parser')
+    
+    # Remove navigation, headers, footers, comments, etc.
+    for div in soup.find_all(['nav', 'header', 'footer', 'script', 'style']):
+        div.decompose()
+    
+    # Optional: Remove specific Confluence classes
+    for div in soup.find_all(class_=re.compile(r'confluence-|aui-|header-|footer-')):
+        div.decompose()
+    
+    # Extract main content
+    main_content = soup.find('div', {'id': 'main-content'}) or soup
+    
+    # Get plain text and clean it
+    text = main_content.get_text(separator=' ', strip=True)
+    
+    # Clean up whitespace
+    text = re.sub(r'\s+', ' ', text).strip()
+    
+    # Create structured output
+    document = {
+        "title": title,
+        "content": text,
+        "id": fileId,
+        "parent_id": parentId,
     }
+    
+    return document
 
-    # Fetch all pages in the specified space
-    response = requests.get(
-        url=get_pages_from_spaceId_url,
-        headers=headers,
-        auth=HTTPBasicAuth(username, api_token)
-    )
-
-    if response.status_code == 200:
-        st.json(json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": ")))
-
+def process_directory(directory_path, output_file):
+    documents = []
+    
+    for filename in os.listdir(directory_path):
+        if filename.endswith('.html'):
+            file_path = os.path.join(directory_path, filename)
+            with open(file_path, 'r', encoding='utf-8') as file:
+                html_content = file.read()
+                document = preprocess_confluence_html(
+                    html_content, 
+                    title=filename.split("_")[2],
+                    fileId=filename.split("_")[0], 
+                    parentId=filename.split("_")[1]
+                    )
+                documents.append(document)
+    
+    # Save to JSON file (for RAG ingestion)
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(documents, f, ensure_ascii=False, indent=2)
+    
+    return documents
 
 def fetch_confluence_pages():
-    your_domain = "alten-mdc.atlassian.net"
-    spaceKey = "PRA"
-    spaceId = 2182709250
-    # Replace with your Confluence URL, username, and API token
-    get_pages_from_spaceId_url = f"https://{your_domain}/wiki/api/v2/spaces/{spaceId}/pages?limit=250&body-format=atlas_doc_format"
-    get_space_id_url = f"https://{your_domain}/wiki/rest/api/space/{spaceKey}"
-    confluence_url = f"https://{your_domain}/wiki/rest/api/space/{spaceKey}/content"
-    confluence_url_v2 = f"https://{your_domain}/wiki/api/v2/pages/{id}?body-format={1}"
-    next_url = f"https://{your_domain}/wiki/api/v2/spaces/2182709250/pages?cursor=eyJpZCI6IjIyMTEwODYzMzgiLCJjb250ZW50T3JkZXIiOiJpZCIsImNvbnRlbnRPcmRlclZhbHVlIjoyMjExMDg2MzM4fQ=="
-    username = "theo.badoz@alten.com"
-    api_token = st.secrets["confluence_api_token"]
-    space_key = "PRA"
-
     # Create a directory to store the pages
     output_dir = "./confluence_pages"
     os.makedirs(output_dir, exist_ok=True)
 
+    your_domain = "alten-mdc.atlassian.net"
+    spaceId = 2182709250
+    get_pages_from_spaceId_url = f"https://{your_domain}/wiki/api/v2/spaces/{spaceId}/pages?limit=250&body-format=storage"
+    username = "theo.badoz@alten.com"
+    api_token = st.secrets["confluence_api_token"]
     headers = {
         "Accept": "application/json"
     }
@@ -54,34 +82,27 @@ def fetch_confluence_pages():
     )
 
     if response.status_code == 200:
-        st.json(json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": ")))
-        
-        #pages = response.json()["results"]
-        
+        response_json = json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": "))
+        response_json = json.loads(response.text)['results']
 
-
-    if response.status_code == 200:
-        pages = response.json()["results"]
-        for page in pages:
+    with st.spinner(f"Downloading confluence for space {spaceId}"):
+        for id, page in enumerate(response_json):
+            title = page['title']
             page_id = page['id']
-            page_title = page['title'].replace('/', '_')  # Replace slashes to avoid file issues
+            parent_id = page['parentId']
+            body = page['body']['storage']['value']
+            st.write(f"Saving {title}...{id + 1}/{len(response_json)}")
+            try:
+                save_html(body, f"{output_dir}/{page_id}_{parent_id}_{title}.html")
+            except Exception as e:
+                st.error(f"Error saving {title}: {e}")
+                continue
+        st.success("Done!")
+        
+def save_html(content, filename):
+    with open(filename, 'w', encoding='utf-8') as f:
+        f.write(content)
 
-            # Fetch the content of each page
-            content_response = requests.get(
-                f"{confluence_url}/rest/api/content/{page_id}?expand=body.storage",
-                auth=HTTPBasicAuth(username, api_token)
-            )
-
-            if content_response.status_code == 200:
-                content = content_response.json()["body"]["storage"]["value"]
-                # Save the content to a text file
-                with open(os.path.join(output_dir, f"{page_title}.txt"), "w", encoding="utf-8") as file:
-                    file.write(content)
-                st.write(f"Saved: {page_title}.txt")
-            else:
-                print(f"Failed to fetch content for page {page_title}: {content_response.status_code} - {content_response.text}")
-    else:
-        st.write(f"Failed to fetch pages: {response.status_code} - {response.text}")
 
 if __name__ == "__main__":
     fetch_confluence_pages()
