@@ -2,10 +2,15 @@ import streamlit as st
 import pandas as pd
 from utils.documents import process_documents, get_document_status, delete_document
 from utils.vector_store import initialize_vector_store
+from utils.query_confluence import fetch_confluence_pages
 
 def show_document_manager():
     st.title("Document Manager")
     
+    st.subheader("Fetch Confluence Pages")
+    if st.button("Fetch Confluence Pages"):
+        fetch_confluence_pages()
+
     # Initialize document metadata if not exists
     if "document_metadata" not in st.session_state:
         st.session_state.document_metadata = {}
