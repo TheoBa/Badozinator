@@ -24,7 +24,6 @@ def show_document_manager():
                 try:
                     # Process documents
                     all_splits = process_documents(uploaded_files)
-                    st.success(f"Successfully processed {len(uploaded_files)} documents with {len(all_splits)} chunks")
                     
                     # Initialize vector store
                     with st.spinner("Initializing vector store..."):

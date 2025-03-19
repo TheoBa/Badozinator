@@ -111,6 +111,7 @@ def process_documents(uploaded_files):
             # Process document
             splits = process_document(file_path)
             all_splits.extend(splits)
+            st.success(f"Successfully processed {uploaded_file.name} in {len(splits)} chunks")
             
         except Exception as e:
             st.error(f"Error processing {uploaded_file.name}: {str(e)}")
