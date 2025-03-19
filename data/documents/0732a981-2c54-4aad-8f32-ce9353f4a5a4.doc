@@ -1,0 +1,516 @@
+Message-ID: <1451572291.5.1742395028389@0e0ff65f5076>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_4_1458899651.1742395028383"
+
+------=_Part_4_1458899651.1742395028383
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Team and work organization</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font: var(--ds-font-body-small, Arial, Helvetica, FreeSans, sans-se=
+rif);
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: var(--ds-surface, #fff) !important;
+        color: var(--ds-text, #000) !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: var(--ds-text, #000);
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        page-break-after: avoid;
+    }
+
+    pre {
+        font: var(--ds-font-code, Monaco, "Courier New", monospace);
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Team and work organization</h1>
+    <div class=3D"Section1">
+        <style type=3D"text/css">/*<![CDATA[*/
+div.rbtoc1742395028356 {padding: 0px;}
+div.rbtoc1742395028356 ul {list-style: default;margin-left: 0px;}
+div.rbtoc1742395028356 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style>
+<div class=3D"toc-macro rbtoc1742395028356">
+<style>[data-colorid=3Dhexwgld25j]{color:#ff5630} html[data-color-mode=3Dda=
+rk] [data-colorid=3Dhexwgld25j]{color:#cf2600}[data-colorid=3Ddxmf1o1klm]{c=
+olor:#4c9aff} html[data-color-mode=3Ddark] [data-colorid=3Ddxmf1o1klm]{colo=
+r:#004eb3}[data-colorid=3Duwbfukxqs4]{color:#4c9aff} html[data-color-mode=
+=3Ddark] [data-colorid=3Duwbfukxqs4]{color:#004eb3}[data-colorid=3Dod7kvzu8=
+t1]{color:#4c9aff} html[data-color-mode=3Ddark] [data-colorid=3Dod7kvzu8t1]=
+{color:#004eb3}[data-colorid=3Dn79v4km02y]{color:#ff5630} html[data-color-m=
+ode=3Ddark] [data-colorid=3Dn79v4km02y]{color:#cf2600}[data-colorid=3Dd4zj3=
+ieska]{color:#4c9aff} html[data-color-mode=3Ddark] [data-colorid=3Dd4zj3ies=
+ka]{color:#004eb3}</style>
+<ul class=3D"toc-indentation">
+<li><a href=3D"#Teamandworkorganization-Workorganization">Work organization=
+</a></li>
+<li><a href=3D"#Teamandworkorganization-ScopeoftheJIRA">Scope of the JIRA</=
+a></li>
+<li><a href=3D"#Teamandworkorganization-Teamrepartition">Team repartition</=
+a></li>
+<li><a href=3D"#Teamandworkorganization-Agileceremonies">Agile ceremonies</=
+a></li>
+<li><a href=3D"#Teamandworkorganization-Definitionofdone">Definition of don=
+e</a></li>
+</ul>
+</div>
+<h1 id=3D"Teamandworkorganization-Workorganization">Work organization</h1>
+<ul>
+<li>
+<p>3 weeks sprints</p></li>
+</ul>
+<h1 id=3D"Teamandworkorganization-ScopeoftheJIRA">Scope of the JIRA</h1>
+<p>The Jira will represent the quality team projects. Other tasks like oper=
+ations, monthly reporting or special requests will not be handled inside th=
+e Jira (for now at least)</p>
+<h1 id=3D"Teamandworkorganization-Teamrepartition">Team repartition</h1>
+<p>As a consequence, the team repartition will be :</p>
+<ul>
+<li>
+<p>Alix Philippe Ariane and Sebastien 100% on the items covered by the JIRA=
+</p></li>
+<li>
+<p>Wlod and Tomasz will have</p>
+<ul>
+<li>
+<p>50% of their time for the projects (JIRA)</p></li>
+<li>
+<p>50% of their time to handle the extra-tasks happening during the sprints=
+</p></li>
+</ul></li>
+</ul>
+<h1 id=3D"Teamandworkorganization-Agileceremonies">Agile ceremonies</h1>
+<p><img class=3D"emoticon emoticon-information" data-emoji-id=3D"atlassian-=
+info" data-emoji-shortname=3D":info:" data-emoji-fallback=3D":info:" src=3D=
+"f1098f1b74105d8f83139ab13f05757a7bc91604cfbf07cd4a782cd3ac189004" width=3D=
+"16" height=3D"16" data-emoticon-name=3D"information" alt=3D"(info)"> : all=
+ hours are in EST time (Montr=C3=A9al)</p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"1800" data-layout=3D"align-start" data-local-id=
+=3D"a9ea8b42-f0bf-4191-9e36-c30a59f7298a" class=3D"confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">
+<p><strong>Ceremony</strong></p></th>
+<th class=3D"confluenceTh">
+<p><strong>Week 1</strong></p></th>
+<th class=3D"confluenceTh">
+<p><strong>Week 2</strong></p></th>
+<th class=3D"confluenceTh">
+<p><strong>Week 3</strong></p></th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>Sprint planning <em><span data-colorid=3D"d4zj3ieska">(dev team)</span><=
+/em></p></td>
+<td class=3D"confluenceTd">
+<p><span style=3D"background-color: rgb(211,241,167);">Monday </span>8h00 -=
+ 9h00</p></td>
+<td data-highlight-colour=3D"#b3bac5" class=3D"confluenceTd">
+<p></p></td>
+<td data-highlight-colour=3D"#b3bac5" class=3D"confluenceTd">
+<p></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>15-min touchpoints <em><span data-colorid=3D"od7kvzu8t1">(dev team)</spa=
+n></em></p></td>
+<td class=3D"confluenceTd">
+<p><span style=3D"background-color: rgb(254,222,200);">Thursday </span>- 8h=
+00 - 8h15</p></td>
+<td class=3D"confluenceTd">
+<p><span style=3D"background-color: rgb(198,237,251);">Tuesday </span>and <=
+span style=3D"background-color: rgb(254,222,200);">Thursday </span>- 8h00 -=
+ 8h15</p></td>
+<td class=3D"confluenceTd">
+<p><span style=3D"background-color: rgb(198,237,251);">Tuesday </span> 8h00=
+ - 8h15</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>Grooming<em><span data-colorid=3D"dxmf1o1klm"> (dev team)</span></em></p=
+></td>
+<td data-highlight-colour=3D"#b3bac5" class=3D"confluenceTd">
+<p></p></td>
+<td class=3D"confluenceTd">
+<p><span style=3D"background-color: rgb(253,208,236);">Wednesday </span> 9h=
+00-10h00</p></td>
+<td data-highlight-colour=3D"#b3bac5" class=3D"confluenceTd">
+<p></p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>Sprint retrospective <em><span data-colorid=3D"uwbfukxqs4">(dev team)</s=
+pan></em></p></td>
+<td data-highlight-colour=3D"#b3bac5" class=3D"confluenceTd">
+<p></p></td>
+<td data-highlight-colour=3D"#b3bac5" class=3D"confluenceTd">
+<p></p></td>
+<td class=3D"confluenceTd">
+<p><span style=3D"background-color: rgb(254,222,200);">Thursday </span>9h00=
+-10h00</p></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>Sprint review <em><span data-colorid=3D"n79v4km02y">(dev team </span></e=
+m><img class=3D"emoticon emoticon-plus" data-emoji-id=3D"atlassian-plus" da=
+ta-emoji-shortname=3D":plus:" data-emoji-fallback=3D":plus:" src=3D"33ef549=
+8d42531f5c552d67d7358404d3139bb4ee7ed33fe69eb599ee8eae4ca" width=3D"16" hei=
+ght=3D"16" data-emoticon-name=3D"plus" alt=3D"(plus)"><em><span data-colori=
+d=3D"hexwgld25j"> customers)</span></em></p></td>
+<td data-highlight-colour=3D"#b3bac5" class=3D"confluenceTd">
+<p></p></td>
+<td data-highlight-colour=3D"#b3bac5" class=3D"confluenceTd">
+<p></p></td>
+<td class=3D"confluenceTd">
+<p><span style=3D"background-color: rgb(223,216,253);">Friday </span>13h00 =
+- 14h00</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img class=3D"emoticon emoticon-information" data-emoji-id=3D"atlassian-=
+info" data-emoji-shortname=3D":info:" data-emoji-fallback=3D":info:" src=3D=
+"f1098f1b74105d8f83139ab13f05757a7bc91604cfbf07cd4a782cd3ac189004" width=3D=
+"16" height=3D"16" data-emoticon-name=3D"information" alt=3D"(info)"> : Spr=
+int starts on Mondays morning after the planning and finish 3 weeks later o=
+n Fridays after the review.</p>
+<h1 id=3D"Teamandworkorganization-Definitionofdone">Definition of done</h1>
+<p><img class=3D"emoticon emoticon-information" data-emoji-id=3D"atlassian-=
+info" data-emoji-shortname=3D":info:" data-emoji-fallback=3D":info:" src=3D=
+"f1098f1b74105d8f83139ab13f05757a7bc91604cfbf07cd4a782cd3ac189004" width=3D=
+"16" height=3D"16" data-emoticon-name=3D"information" alt=3D"(info)"> : We =
+determine as a team what are a conditions required to consider a task or st=
+ories done.</p>
+<div class=3D"table-wrap">
+<table data-table-width=3D"1800" data-layout=3D"align-start" data-local-id=
+=3D"48cbaab3-aacd-4c8a-afd6-653c79afe29e" class=3D"confluenceTable">
+<tbody>
+<tr>
+<th class=3D"confluenceTh">
+<p><strong>Category</strong></p></th>
+<th class=3D"confluenceTh">
+<p><strong>Definition of done</strong></p></th>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>Power BI feature</p></td>
+<td class=3D"confluenceTd">
+<ul>
+<li>
+<p>Unit testing by the team (QA phase)</p></li>
+<li>
+<p>UAT must be completed</p></li>
+<li>
+<p>We have a plan for the dashboard refresh</p>
+<ul>
+<li>
+<p>automatic schedule when possible</p></li>
+<li>
+<p>establish a plan for manual updates when we require a human approval bef=
+ore loading data.</p></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>Date engineering tasks including DT team</p>
+<ul>
+<li>
+<p>Data extraction and data ingestion into Databricks</p></li>
+<li>
+<p>Every other tasks under the DT team responsibility and ownership</p></li=
+>
+</ul></td>
+<td class=3D"confluenceTd">
+<ul>
+<li>
+<p>Unit testing by the team (QA phase)</p></li>
+<li>
+<p>UAT done by DT team</p></li>
+<li>
+<p>Code has been merged in the weekly DT release (code is going to producti=
+on).</p></li>
+</ul></td>
+</tr>
+<tr>
+<td class=3D"confluenceTd">
+<p>Date engineering tasks not requiring DT Team</p>
+<ul>
+<li>
+<p>Databricks code (transformation=E2=80=A6)</p></li>
+</ul></td>
+<td class=3D"confluenceTd">
+<ul>
+<li>
+<p>Unit testing by the team (QA phase)</p>
+<ul>
+<li>
+<p>We validate that the date after transformation in Databricks match the m=
+anual transformation</p></li>
+</ul></li>
+<li>
+<p>Data are curated/organized/arranged in the way that make them usable for=
+ the dashboards needs</p></li>
+<li>
+<p>UAT done - customers accept the final data.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</div>
+    </div>
+</body>
+</html>
+------=_Part_4_1458899651.1742395028383
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: file:///C:/f1098f1b74105d8f83139ab13f05757a7bc91604cfbf07cd4a782cd3ac189004
+
+iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlz
+AABuugAAbroB1t6xFwAAAVlpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1s
+bnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpS
+REYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMj
+Ij4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6
+dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iPgogICAgICAgICA8dGlmZjpPcmll
+bnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAg
+PC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KTMInWQAAAhNJREFUOBGlUztsE0EQfbN7d5aQZUcKBYpo
+XFEioaSigipJAyXULkNLRZOeFhokaiiTBkKDKyoQNdC4QIIIEZQcQdi+H+/N2SYgUTHS+MZv583u
+zL41yHZ3A732eHt/HQ2GjK8BzcAx2JjfEQyP8ezGG8fmHPuDvLn3ADHdQewA1RRrSeW5n8qIBYaq
+eIiDm3cWRcwD/WzvP0fa28TsuEZjVS9BzMdF0FJvkNZ5iQrWRGQrAUV+wJNsac0ToJ2dfDIlZP1o
+af6tCveGFyFXLExrmDFHueLQjDuvw5LXqGecQbDVBHb0tcStqyt4cv+6cnD77ks8fXWM1fMJjkpO
+CHWDkAU05UbiA0vYc12w4SadaJTnAj4cTvDxc+4FFAubkEdj21ZyJmylHBq29t4hpJdYQFRvqcvf
+01P+PWyHiAsRXYKC5laTE8h5L8IAdSncyQq6bBVfKrx4dMVdsWNabI1k5wySBXL2y0sDCmDj8loL
+F2/h2NmkeaxdxwheZ3lAD1LDz0nhDsbLxZbIFpwzZgEbuUgoncUGLg7Oq5NFd839t2A8q2o5Ngou
+T6qON8BTWjtmZf+oeQvf3RXbsoJymCsOpd3CEkWnv+MigWXRKMWSeRqmjNcXE0PVOHmGrN/B9MQl
+vaz7t5STgNhQLuJz97qs/yVlvSqZtK2qUljWTUtLQyBTrliYryln/g70ENsT/Mdz/gWJOPDjy+kD
+WAAAAABJRU5ErkJggg==
+------=_Part_4_1458899651.1742395028383
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: file:///C:/33ef5498d42531f5c552d67d7358404d3139bb4ee7ed33fe69eb599ee8eae4ca
+
+iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlz
+AABuugAAbroB1t6xFwAAAVlpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1s
+bnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpS
+REYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMj
+Ij4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6
+dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iPgogICAgICAgICA8dGlmZjpPcmll
+bnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAg
+PC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KTMInWQAAAhRJREFUOBGlU7FqVEEUPXfevH0xWQMihgSj
+YLWxDGhhYWGnfyCxjI3EH3CxCCjxBxQbUyr5ArWRLQ1EsLDRakETtLHRVbJ582Y8Z96uYGsG5nG5
+c8+995x7n0Fnc9Pxxmw/vHkJhVuH2TWkdCH7zIa0B2jiNu7vvMu+Ccb+AW+tPUZZbPACdYOyaXPW
+hcPUR/8T9F/cnSaxbOjz6NYrdKvrGB0K1XhYkZCIBAwWA1JDs0B3xmE0fo17z2/ojaV4VPnkzBrB
+Y0Z7OosmRUtmSHyOtAtjQpU7CkdMsoKrF8/gzYeXBnGuyj0E9stSRNiy89j/8Rnvbz9Veqw+u4Pl
++fPYZx85gq2xjMO4vuyzYOIcmoY9l0sEz5k4z+Lc6cWcQLZ8Svw1BiOXQE0cMeukSrUpmDgH0lRl
+ATD6iDG7zYf2Jxn1b2BuEd6KIhAjrNeopHaUYKyitlV5HGoszJ/K+IP+Lipf4sv3b1jdecD+kxOm
+JjarnKP+8yMKQ86550NkE42TYFMKB/23Oe3ZrStAd+UvBQ4kEuO4WENRGFCQXpCI5twS1ZZg4lz5
+TtsXwb3ZBfxKUSJSQYrVijhQlm2JyFM0HKJGpUAJJs66suXTm2IUmzHEtpvYLtLGZJE6HKdxkajy
+RCLa7K4FJ2iRKvw8zCt97FXWX9iW0W4rqzbsRKcM3jnHVdaVLV9+U8zkPxC27eAYv/Mfv4kgfoJC
+XngAAAAASUVORK5CYII=
+------=_Part_4_1458899651.1742395028383--
