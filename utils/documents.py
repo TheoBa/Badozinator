@@ -99,6 +99,10 @@ def process_document(file_path):
         
         raise e
 
+def process_confluence(json_path):
+    """Process Confluence JSON export and return combined chunks"""
+    return
+
 def process_documents(uploaded_files):
     """Process multiple documents and return combined chunks"""
     all_splits = []

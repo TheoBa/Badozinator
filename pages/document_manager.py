@@ -13,7 +13,7 @@ def show_document_manager():
     if st.button("Process Confluence Pages"):
         process_directory(
             directory_path="./confluence_pages", 
-            output_file="./data/documents/pratt_confluence.json"
+            output_file="./data/confluence/pratt_confluence.json"
             )
 
     # Initialize document metadata if not exists

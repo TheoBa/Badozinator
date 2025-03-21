@@ -4,6 +4,7 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
 from utils.embeddings import get_mistral_llm
 from utils.vector_store import load_vector_store
+import json
 
 def show_qa_interface():
     st.title("Knowledge Base Q&A")
@@ -52,7 +53,7 @@ def show_qa_interface():
         
         Question: {input}
         
-        If the answer is not in the context, say "I don't have enough information to answer this question."
+        If the answer is not in the context, say "I don't have enough information to fully answer this question." then answer as best as you can.
         """)
         
         # Create chain
@@ -65,9 +66,7 @@ def show_qa_interface():
             response = result["answer"]
             
             # Get source documents
-            source_docs = []
-            if "context" in result and hasattr(result["context"], "get_content"):
-                source_docs = result["context"].get_content()
+            source_docs = [dict(r)["metadata"]["original_name"] for r in result["context"]]
             
             # Add assistant message to chat history
             st.session_state.messages.append({"role": "assistant", "content": response})
@@ -75,6 +74,7 @@ def show_qa_interface():
             # Display response
             with st.chat_message("assistant"):
                 st.write(response)
+                st.write(f"source: {source_docs}")
                 
                 # Display sources if available
                 if source_docs:

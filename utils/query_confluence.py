@@ -5,6 +5,8 @@ import os
 import json
 from bs4 import BeautifulSoup
 import re
+from datetime import datetime
+from utils.documents import process_document
 
 
 def preprocess_confluence_html(html_content, title, fileId, parentId):
@@ -58,6 +60,28 @@ def process_directory(directory_path, output_file):
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(documents, f, ensure_ascii=False, indent=2)
     
+    # Initialize document metadata if not exists
+    if "document_metadata" not in st.session_state:
+        st.session_state.document_metadata = {}
+        
+    for doc in documents:
+        file_path = f"data/documents/{doc['title']}.txt"
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(doc['content'])
+        
+        st.session_state.document_metadata[f"{doc["title"]}.txt"] = {
+            "original_name": doc["title"],
+            "upload_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "size": len(doc["content"]),
+            "status": "uploaded",
+            "processing_error": None
+        }
+    
+        splits = process_document(file_path)
+    
+    # Mark documents as processed
+    st.session_state.documents_processed = True
+
     return documents
 
 def fetch_confluence_pages():
@@ -103,6 +127,5 @@ def save_html(content, filename):
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(content)
 
-
-if __name__ == "__main__":
-    fetch_confluence_pages()
+# if __name__ == "__main__":
+#     fetch_confluence_pages()
