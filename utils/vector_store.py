@@ -66,8 +66,8 @@ def initialize_vector_store():
     
     return retriever
 
-def load_vector_store():
-    """Load existing vector store"""
+def load_vector_store(enabled_docs=None):
+    """Load existing vector store, optionally filtering by enabled documents"""
     embeddings = get_mistral_embeddings()
     if not embeddings:
         return None
@@ -98,7 +98,25 @@ def load_vector_store():
             return None
         
         # Load FAISS vector store
-        vector_store = FAISS.load_local(VECTOR_STORE_DIR, embeddings)
+        vector_store = FAISS.load_local(
+            folder_path=VECTOR_STORE_DIR, 
+            embeddings=embeddings,
+            allow_dangerous_deserialization=True
+            ) 
+        
+        # Filter by enabled documents if specified
+        if enabled_docs is not None:
+            # Create a new vector store with only enabled documents
+            filtered_docs = []
+            for doc in vector_store.docstore._dict.values():
+                if doc.metadata.get("source") in enabled_docs:
+                    filtered_docs.append(doc)
+            
+            if filtered_docs:
+                vector_store = FAISS.from_documents(filtered_docs, embeddings)
+            else:
+                st.warning("No documents selected")
+                return None
     
     # Create retriever
     retriever = vector_store.as_retriever(search_kwargs={"k": 5})

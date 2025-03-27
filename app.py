@@ -47,9 +47,9 @@ if use_pinecone:
         st.session_state.pinecone_index = st.secrets.pinecone_index
 
 # Initialize vector store if needed
-if "retriever" not in st.session_state and "documents_processed" in st.session_state and st.session_state.documents_processed:
-    with st.spinner("Initializing vector store..."):
-        st.session_state.retriever = initialize_vector_store()
+# if "retriever" not in st.session_state and "documents_processed" in st.session_state and st.session_state.documents_processed:
+#     with st.spinner("Initializing vector store..."):
+#         st.session_state.retriever = initialize_vector_store()
 
 # Load the appropriate page
 if page == "Q&A Interface":

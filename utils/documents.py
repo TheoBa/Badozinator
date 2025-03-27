@@ -1,5 +1,6 @@
 import os
 import uuid
+import json
 import pandas as pd
 import streamlit as st
 from datetime import datetime
@@ -99,9 +100,51 @@ def process_document(file_path):
         
         raise e
 
-def process_confluence(json_path):
-    """Process Confluence JSON export and return combined chunks"""
-    return
+def process_confluence_data(json_path):
+    """Process Confluence JSON export and return document chunks"""
+    try:
+        # Load JSON data
+        with open(json_path, 'r', encoding='utf-8') as f:
+            confluence_data = json.load(f)
+        
+        # Initialize document metadata if not exists
+        if "document_metadata" not in st.session_state:
+            st.session_state.document_metadata = {}
+        
+        all_splits = []
+        # Process each page
+        for page in confluence_data:
+            # Create a unique ID for the document
+            doc_id = f"confluence_{page['id']}"
+            
+            # Store metadata
+            st.session_state.document_metadata[doc_id] = {
+                "original_name": page['title'],
+                "upload_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                "status": "processed",
+                "type": "confluence",
+                "parent_id": page.get('parent_id'),
+                "enabled": True  # Default to enabled
+            }
+            
+            # Create document for vector store
+            doc = {
+                "page_content": page['content'],
+                "metadata": {
+                    "source": doc_id,
+                    "title": page['title'],
+                    "type": "confluence"
+                }
+            }
+            all_splits.append(doc)
+            
+        # Mark documents as processed
+        st.session_state.documents_processed = True
+        
+        return all_splits
+    except Exception as e:
+        st.error(f"Error processing Confluence data: {str(e)}")
+        return []
 
 def process_documents(uploaded_files):
     """Process multiple documents and return combined chunks"""

@@ -6,6 +6,16 @@ from utils.embeddings import get_mistral_llm
 from utils.vector_store import load_vector_store
 import json
 
+def get_selected_documents():
+    """Return list of enabled document IDs"""
+    
+    enabled_docs = []
+    if "document_metadata" in st.session_state:
+        for doc_id, metadata in st.session_state.document_metadata.items():
+            if metadata["enabled"]:
+                enabled_docs.append(doc_id)
+    return enabled_docs
+
 def show_qa_interface():
     st.title("Knowledge Base Q&A")
     
@@ -14,14 +24,21 @@ def show_qa_interface():
         st.info("Please process documents in the Document Manager first")
         return
     
-    # Get retriever
-    retriever = st.session_state.get("retriever")
-    if not retriever:
-        retriever = load_vector_store()
+    # Show document selector in sidebar
+    try:
+        enabled_docs = get_selected_documents()
+        st.write(f"Selected documents: {enabled_docs}")
+    
+        # Get retriever with filtered documents
+        retriever = st.session_state.get("retriever")
         if not retriever:
-            st.error("Failed to load vector store")
-            return
-        st.session_state.retriever = retriever
+            retriever = load_vector_store(enabled_docs)
+            if not retriever:
+                st.error("Failed to load vector store")
+                return
+    
+    except Exception as e:
+        retriever = load_vector_store()
     
     # Get LLM
     llm = get_mistral_llm()
