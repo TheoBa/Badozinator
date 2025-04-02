@@ -179,7 +179,7 @@ def get_document_status():
         row = {
             "Original Name": metadata["original_name"],
             "Upload Date": metadata["upload_date"],
-            "Size (KB)": round(metadata["size"] / 1024, 2),
+            "Size (KB)": round(metadata.get("size", 0) / 1024, 2),
             "Status": metadata["status"],
             "Chunks": metadata.get("chunks", 0),
             "Error": metadata.get("processing_error", "")
