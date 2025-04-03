@@ -3,6 +3,7 @@ name = "badozinator"
 version = "0.1.0"
 description = "A simple knowledge management system using a Retrieval-Augmented Generation (RAG) approach with the Mistral API and a Streamlit application."
 authors = ["Théo Badoz <theo.badoz@gmail.com>"]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"
