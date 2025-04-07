@@ -5,9 +5,6 @@ import os
 import json
 from bs4 import BeautifulSoup
 import re
-from datetime import datetime
-from utils.documents import process_document
-
 
 def preprocess_confluence_html(html_content, title, fileId, parentId):
     # Parse HTML
@@ -65,19 +62,21 @@ def fetch_confluence_pages():
         response_json = json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": "))
         response_json = json.loads(response.text)['results']
 
-    with st.spinner(f"Downloading confluence for space {spaceId}"):
-        for id, page in enumerate(response_json):
-            title = page['title']
-            page_id = page['id']
-            parent_id = page['parentId']
-            body = page['body']['storage']['value']
-            st.write(f"Saving {title}...{id + 1}/{len(response_json)}")
-            try:
-                save_html(body, f"{output_dir}/{page_id}_{parent_id}_{title}.html")
-            except Exception as e:
-                st.error(f"Error saving {title}: {e}")
-                continue
-        st.success("Done!")
+        with st.spinner(f"Downloading confluence for space {spaceId}"):
+            for id, page in enumerate(response_json):
+                title = page['title']
+                page_id = page['id']
+                parent_id = page['parentId']
+                body = page['body']['storage']['value']
+                st.write(f"Saving {title}...{id + 1}/{len(response_json)}")
+                try:
+                    save_html(body, f"{output_dir}/{page_id}_{parent_id}_{title}.html")
+                except Exception as e:
+                    st.error(f"Error saving {title}: {e}")
+                    continue
+            st.success("Done!")
+    else:
+        st.error(f"Failed to fetch pages: {response.status_code} - {response.text}")
         
 def save_html(content, filename):
     with open(filename, 'w', encoding='utf-8') as f:
